@@ -251,41 +251,67 @@ h2 {
 
 /* portfolio */
 
-.card {
-    background-color: var(--color-primary);
-    /* border-radius: 5px; */
-    color: var(--color-secondary);
-    min-width: 350px;
-    border-radius: 10px;
-}
-
-.card img {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.card-description {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
     gap: var(--gap);
 }
 
-.card img {
-    aspect-ratio: 16 / 9;
+.card {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    background-color: transparent;
+
+    position: relative;
+    box-shadow: 0 0 1rem #000;
+    overflow: hidden;
+    display: flex;
+
 }
 
-.card h3 {
-    font-size: 1.4rem;
-    font-weight: bold;
+.card img {
+    width: 100%;
+    object-fit: contain;
+    transition: transform 350ms ease-in-out;
+}
+
+.card-description {
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--color-primary);
+    background: rgba(0, 0, 0, .7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: var(--gap);
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: opacity 400ms ease-in-out;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+    transition: transform 350ms ease-in-out;
+}
+
+.card:hover .card-description {
+    opacity: 1;
+    transition: opacity 400ms ease-in-out;
 }
 
 .card p {
-    font-size: .9rem;
+    font-size: .8rem;
     text-align: justify;
+    margin-bottom: 1rem;
 }
 
 .card a {
-    color: var(--color-secondary);
     align-self: flex-end;
 }
